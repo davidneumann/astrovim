@@ -41,6 +41,19 @@ return {
     },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["<leader>T"] = { name = "Tests" },
+    ["<leader>Tw"] = {
+      "<cmd>lua require('neotest').run.run({ jestCommand = 'npm run test:watch' })<cr>",
+      desc = "Start jest in watch mode",
+    },
+    ["<leader>Tn"] = {
+      function() require("neotest").run.run() end,
+      desc = "Start nearest test",
+    },
+    ["<leader>Tf"] = {
+      function() require("neotest").run.run(vim.fn.expand "%") end,
+      desc = "Run all tests in file.",
+    },
   },
   t = {
     -- setting a mapping to false will disable it
